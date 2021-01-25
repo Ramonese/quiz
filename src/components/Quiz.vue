@@ -2,7 +2,7 @@
   <div>
     <div>
       <div v-for="(item, index) in test.test" :key="index">
-        <AnswerBox @sendData="saveAnswer" :content="item" />
+        <AnswerBox @sendData="saveAnswer" :content="item" :number="index + 1" />
       </div>
       <!-- <div v-for="(item, index) in test.test" :key="index">
         <p>{{ item.question }}</p>
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-//import { FormWizard, TabContent } from "vue-form-wizard";
-//import "vue-form-wizard/dist/vue-form-wizard.min.css";
+import { FormWizard, TabContent } from "vue-form-wizard";
+import "vue-form-wizard/dist/vue-form-wizard.min.css";
 import AnswerBox from "./AnswerBox.vue";
 import text from "../assets/content.json";
 const content = text;
@@ -45,10 +45,5 @@ h3 {
 }
 ul {
   list-style-type: upper-latin;
-}
-li {
-}
-a {
-  color: #42b983;
 }
 </style>

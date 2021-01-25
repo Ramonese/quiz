@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <Quiz msg="Hello Vue in CodeSandbox!" />
+    <!-- v-if show result:  -->
+    <QuizResult :score="100" text="red alert" />
   </div>
 </template>
 
 <script>
 import Quiz from "./components/Quiz";
+import QuizResult from "./components/QuizResult";
 
 export default {
   name: "App",
   components: {
     Quiz,
+    QuizResult,
   },
 };
 </script>
