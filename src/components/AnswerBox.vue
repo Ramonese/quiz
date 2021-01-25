@@ -1,9 +1,7 @@
 <template>
-  <div class="quiz-text">
-    <header class="quiz--heading">
-      <span class="quiz--heading-number">{{ number }}</span>
-      <h3 class="quiz--heading-text">{{ content.question }}</h3>
-    </header>
+  <div class="quiz--content">
+    <span class="quiz--heading-number blue">{{ number }}</span>
+    <h3 class="quiz--heading-text blue">{{ content.question }}</h3>
     <form @change.prevent="sendAnswer" class="quiz--text">
       <ul>
         <li
@@ -13,15 +11,22 @@
         >
           <div>
             <input
-              class="quiz--text-input -sr-only"
+              class="quiz--text-input sr-only"
               type="radio"
-              :id="index"
+              :id="index + answer.label"
               :value="answer.value"
               v-model="checked"
             />
-            <label :for="index" class="quiz--text-label">{{
-              answer.label
-            }}</label>
+
+            <label :for="index + answer.label" class="quiz--text-label"
+              ><span
+                v-for="(i, index) in letter[index]"
+                class="quiz--label-number"
+                :key="i + index"
+              >
+                {{ i }}</span
+              ><span>{{ answer.label }}</span></label
+            >
           </div>
         </li>
       </ul>
@@ -31,6 +36,7 @@
 </template>
 
 <script>
+const letters = ["A", "B", "C", "D"];
 export default {
   name: "AnswerBox",
   props: {
@@ -42,6 +48,7 @@ export default {
   data() {
     return {
       checked: "",
+      letter: letters,
     };
   },
   methods: {
@@ -61,29 +68,36 @@ export default {
   white-space: nowrap;
   width: 1px;
 }
-.quiz--heading {
-  color: #007ACA;
+.quiz--content {
   display: grid;
-  border: 1px solid red;
   grid-column-gap: 1em;
   grid-template-columns: max-content 1fr;
-  align-items: center;
-  margin-bottom: 40px;
+}
+
+.quiz--text {
+  grid-column-start: 2;
 }
 .quiz--heading-text {
   margin: 0;
+  align-self: center;
 }
 /* for desktop 140px; */
 .quiz--heading-number {
   font-size: 60px;
 }
+.quiz--text {
+  padding: 40px 0;
+}
 .quiz--text-label {
   color: #6D6D6D;
+}
+.quiz--label-number {
+  margin-right: 20px;
 }
 .quiz--text-item {
   margin-bottom: 36px;
 }
-.quiz--text-input:checked + label {
+.quiz--text-input:checked + .quiz--text-label {
   color: #007ACA;
 }
 .quiz--text-input:focus-visible + label {

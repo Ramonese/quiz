@@ -4,6 +4,7 @@
       <div v-for="(item, index) in test.test" :key="index">
         <AnswerBox @sendData="saveAnswer" :content="item" :number="index + 1" />
       </div>
+      Score {{ total }}
       <!-- <div v-for="(item, index) in test.test" :key="index">
         <p>{{ item.question }}</p>
         <ul>
@@ -28,11 +29,13 @@ export default {
   data() {
     return {
       test: content,
+      total: 0,
     };
   },
   methods: {
     saveAnswer(answer) {
       console.log(answer);
+      this.total = this.total + answer;
     },
   },
 };
@@ -44,6 +47,7 @@ h3 {
   margin: 40px 0 0;
 }
 ul {
-  list-style-type: upper-latin;
+  list-style-type: none;
+  padding-left: 0;
 }
 </style>

@@ -2,8 +2,8 @@
   <section>
     <h3>Result</h3>
     <p>
-      <span>Score</span><span>{{ score }}</span
-      ><span>{{ text }}</span>
+      <span>Score</span><span class="blue">{{ score }}</span
+      ><span class="blue">{{ text }}</span>
     </p>
     <p>Thank you for answering questions! We’ve prepared for you.</p>
   </section>
