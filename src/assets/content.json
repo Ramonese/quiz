@@ -1,0 +1,31 @@
+{
+  "test": [
+    {
+      "question": "How does your pension fund provide for annual UPO?",
+      "answer": [
+        { "label": "Snail mail", "value": 10 },
+        { "label": "PDF email ", "value": 20 },
+        { "label": "Download in Portal ", "value": 30 },
+        { "label": "Online real time", "value": 40 }
+      ]
+    },
+    {
+      "question": "How do you update mutation from HR admin in your pension admin?",
+      "answer": [
+        { "label": "Manually", "value": 10 },
+        { "label": "Email ", "value": 20 },
+        { "label": "Uploading file", "value": 30 },
+        { "label": "UPA", "value": 40 }
+      ]
+    },
+    {
+      "question": "How do you reconcile your financial admin and your pension admin?",
+      "answer": [
+        { "label": "We don’t…", "value": 10 },
+        { "label": "Operations does that", "value": 20 },
+        { "label": "I don’t know", "value": 0 },
+        { "label": "Fully integrated, online real time ", "value": 40 }
+      ]
+    }
+  ]
+}
