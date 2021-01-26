@@ -26,6 +26,15 @@
         { "label": "I don’t know", "value": 0 },
         { "label": "Fully integrated, online real time ", "value": 40 }
       ]
+    },
+    {
+      "question": "How do you reconcile your financial admin and your pension admin?",
+      "answer": [
+        { "label": "We don’t…", "value": 10 },
+        { "label": "Operations does that", "value": 20 },
+        { "label": "I don’t know", "value": 0 },
+        { "label": "Fully integrated, online real time ", "value": 40 }
+      ]
     }
   ]
 }

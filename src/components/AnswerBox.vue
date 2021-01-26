@@ -53,7 +53,11 @@ export default {
   },
   methods: {
     sendAnswer() {
-      this.$emit("sendData", this.checked);
+      let answer = {
+        num: this.number,
+        points: this.checked,
+      };
+      this.$emit("sendData", answer);
     },
   },
 };
