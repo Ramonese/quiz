@@ -1,7 +1,7 @@
 <template>
   <form-wizard
     @on-complete="onComplete"
-    shape="square"
+    shape="tab"
     color="#3498db"
     @on-change="onChange"
   >
@@ -57,6 +57,7 @@ export default {
       });
       this.total = count;
       console.log("total", this.total);
+      this.$emit("completeQuiz", this.total);
     },
     onChange(prevIndex, nextIndex) {
       console.log(prevIndex, nextIndex);
