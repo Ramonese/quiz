@@ -49,6 +49,7 @@ export default {
     return {
       checked: "",
       letter: letters,
+      isChecked: false,
     };
   },
   methods: {
@@ -57,7 +58,9 @@ export default {
         num: this.number,
         points: this.checked,
       };
+      this.isChecked = true;
       this.$emit("sendData", answer);
+      //this.$emit("isSelected", this.isChecked);
     },
   },
 };

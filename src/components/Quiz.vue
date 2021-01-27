@@ -1,23 +1,19 @@
 <template>
   <div>
-    <div>
-      <!-- <div v-for="(item, index) in test.test" :key="index">
-        <AnswerBox @sendData="saveAnswer" :content="item" :number="index + 1" />
-      </div> -->
-      Score {{ total }}
-    </div>
+    <div>Score {{ total }}</div>
     <QuizForm />
   </div>
 </template>
 
 <script>
 import QuizForm from "./QuizForm";
-import AnswerBox from "./AnswerBox.vue";
+
 import text from "../assets/content.json";
+
 const content = text;
 export default {
   name: "Quiz",
-  components: { AnswerBox, QuizForm },
+  components: { QuizForm },
   data() {
     return {
       test: content,

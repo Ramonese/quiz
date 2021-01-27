@@ -8,7 +8,6 @@
     <tab-content title="" v-for="(item, index) in test.test" :key="index">
       <AnswerBox @sendData="saveAnswer" :content="item" :number="index + 1" />
     </tab-content>
-    Answers: {{ answers }}
   </form-wizard>
 </template>
 
@@ -52,8 +51,12 @@ export default {
   },
   methods: {
     onComplete: function () {
-      //alert("Done!");
-      console.log(this.answers.length);
+      let count = 0;
+      this.answers.forEach((el) => {
+        count = count + el.points;
+      });
+      this.total = count;
+      console.log("total", this.total);
     },
     onChange(prevIndex, nextIndex) {
       console.log(prevIndex, nextIndex);
@@ -62,18 +65,11 @@ export default {
       let itemIndex = this.answers.findIndex((el) => el.num === answer.num);
       if (itemIndex >= 0) {
         console.log("already exists", this.answers[itemIndex]);
-        this.answers[itemIndex] = {
-          ...this.answers[itemIndex],
-          ...{ points: answer.points },
-        };
+        this.answers[itemIndex].points = answer.points;
       } else {
         console.log("new answer, push");
         this.answers.push(answer);
       }
-      //let newArray = [...this.answers];
-      //newArray[itemIndex] = { ...newArray[itemIndex], points: answer.num };
-      //this.answers.push(answer);
-
       console.log(
         "answer.id",
         answer.num,
