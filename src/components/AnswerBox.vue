@@ -30,7 +30,7 @@
           </div>
         </li>
       </ul>
-      {{ checked }}
+      [ debug: Points: {{ checked }}]
     </form>
   </div>
 </template>

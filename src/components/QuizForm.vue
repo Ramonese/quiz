@@ -2,24 +2,52 @@
   <form-wizard
     @on-complete="onComplete"
     shape="tab"
-    color="#3498db"
+    color="#007ACA"
+    title=""
+    subtitle=""
     @on-change="onChange"
   >
     <tab-content title="" v-for="(item, index) in test.test" :key="index">
       <AnswerBox @sendData="saveAnswer" :content="item" :number="index + 1" />
     </tab-content>
+    <template slot="footer" scope="props">
+      <wizard-button
+        v-if="props.activeTabIndex > 0"
+        :style="{ background: '#6D6D6D', color: '#fff' }"
+        @click.native="props.prevTab()"
+        >Back</wizard-button
+      >
+
+      <wizard-button
+        v-if="!props.isLastStep"
+        @click.native="props.nextTab()"
+        class="wizard-footer-right"
+        :style="props.fillButtonStyle"
+        >Next</wizard-button
+      >
+
+      <wizard-button
+        v-else
+        @click.native="onComplete"
+        class="wizard-footer-right finish-button"
+        :style="props.fillButtonStyle"
+        >{{ props.isLastStep ? "Finish" : "Next" }}</wizard-button
+      >
+    </template>
   </form-wizard>
 </template>
 
+
+
 <script>
 import AnswerBox from "./AnswerBox.vue";
-import { FormWizard, TabContent } from "vue-form-wizard";
+import { FormWizard, TabContent, WizardButton } from "vue-form-wizard";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 import text from "../assets/content.json";
 
 export default {
   name: "QuizForm",
-  components: { FormWizard, TabContent, AnswerBox },
+  components: { FormWizard, TabContent, AnswerBox, WizardButton },
   data() {
     return {
       test: text,
@@ -84,4 +112,13 @@ export default {
 </script>
 
 <style >
+.wizard-icon {
+  font-style: normal;
+}
+.wizard-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 1em;
+}
 </style>
